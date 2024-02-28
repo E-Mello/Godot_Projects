@@ -1,6 +1,12 @@
 extends KinematicBody2D
 
-export (int) var speed = 100
+signal player_fired_bullet(bullet)
+
+export (PackedScene) var Bullet
+export (int) var speed = 200
+
+onready var end_of_gun = $EndOfGun
+onready var gun_direction = $GunDirection
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,3 +29,12 @@ func _process(delta: float) -> void:
 	move_and_slide(movement_direction * speed)
 	
 	look_at(get_global_mouse_position())
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_released("shoot"):
+		shoot()
+
+func shoot():
+	var bullet_instance = Bullet.instance()
+	var direction = (gun_direction.global_position - end_of_gun.global_position).normalized()
+	emit_signal("player_fired_bullet", bullet_instance, end_of_gun.global_position, direction)
