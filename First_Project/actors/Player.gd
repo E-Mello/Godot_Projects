@@ -1,24 +1,20 @@
 extends KinematicBody2D
+class_name Player
 
-signal player_fired_bullet(bullet)
+signal player_fired_bullet(bullet, position, direction)
 
-export (PackedScene) var Bullet
 export (int) var speed = 200
 
-var health: int = 100
-
-onready var end_of_gun = $EndOfGun
-onready var gun_direction = $GunDirection
-onready var attack_cooldown = $AttackCooldown
-onready var animation_player = $AnimationPlayer
+onready var weapon = $Weapon
+onready var health_stat = $Health
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	weapon.connect("weapon_fired", self, "shoot")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var movement_direction := Vector2.ZERO
 	if Input.is_action_pressed("up"):
 		movement_direction.y = -1
@@ -36,16 +32,11 @@ func _process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("shoot"):
-		shoot()
+		weapon.shoot()
 
-func shoot():
-	if attack_cooldown.is_stopped():
-		var bullet_instance = Bullet.instance()
-		var direction = (gun_direction.global_position - end_of_gun.global_position).normalized()
-		emit_signal("player_fired_bullet", bullet_instance, end_of_gun.global_position, direction)
-		attack_cooldown.start()
-		animation_player.play("muzzle_flash")
+func shoot(bullet_instance, location: Vector2, direction: Vector2):
+	emit_signal("player_fired_bullet", bullet_instance, location, direction)
 	
 func handle_hit():
-	health -= 20
-	print("player hit ", health)
+	health_stat.health -= 20
+	print("player hit ", health_stat.health)
