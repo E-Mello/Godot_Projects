@@ -10,7 +10,7 @@ resource_name = "muzzle_flash"
 length = 0.05
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("MuzzleFlash:visible")
+tracks/0/path = NodePath("Weapon/MuzzleFlash:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("MuzzleFlash:scale")
+tracks/1/path = NodePath("Weapon/MuzzleFlash:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -55,6 +55,7 @@ one_shot = true
 visible = false
 position = Vector2( 26, 4.48227e-05 )
 rotation = -1.5708
+scale = Vector2( 0.5, 1.2 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 324, 334, 20, 25 )
