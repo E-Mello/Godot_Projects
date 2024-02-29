@@ -1,6 +1,6 @@
 # Godot Projects
 
-Bem-vindo ao repositório Godot_Projects! 🚀 Aqui você encontrará projetos incríveis desenvolvidos com Godot Engine.
+Bem-vindo ao repositório Godot Projects! 🚀 Aqui você encontrará projetos incríveis desenvolvidos com Godot Engine.
 
 [![GitHub repo size](https://img.shields.io/github/repo-size/E-Mello/Godot_Projects?style=flat-square)](https://github.com/E-Mello/Godot_Projects)
 [![GitHub stars](https://img.shields.io/github/stars/E-Mello/Godot_Projects?style=social)](https://github.com/E-Mello/Godot_Projects/stargazers)
@@ -8,10 +8,6 @@ Bem-vindo ao repositório Godot_Projects! 🚀 Aqui você encontrará projetos i
 ## Overview
 
 Este repositório é dedicado à aprendizagem e desenvolvimento de jogos usando a Godot Engine. Aqui você encontrará uma variedade de projetos, desde jogos simples até projetos mais avançados.
-
-## Tamanho do Repositório
-
-O tamanho atual deste repositório é ![GitHub repo size](https://img.shields.io/github/repo-size/E-Mello/Godot_Projects?style=flat-square). Lembre-se de que o tamanho pode variar à medida que novos projetos são adicionados.
 
 ## Como Contribuir
 
