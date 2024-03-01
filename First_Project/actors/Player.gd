@@ -1,10 +1,14 @@
 extends KinematicBody2D
 class_name Player
 
-export (int) var speed = 200
+export (int) var speed = 300
 
-onready var weapon = $Weapon
+onready var team = $Team
+onready var weapon: Weapon = $Weapon
 onready var health_stat = $Health
+
+func _read() -> void:
+	weapon.initialize(team.team)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -26,6 +30,9 @@ func _physics_process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("shoot"):
 		weapon.shoot()
+
+func get_team() -> int:
+	return team.team
 
 func handle_hit():
 	health_stat.health -= 20
