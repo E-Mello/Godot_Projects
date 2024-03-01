@@ -49,6 +49,7 @@ func initialize(actor: KinematicBody2D, weapon: Weapon, team: int):
 	self.actor = actor
 	self.weapon = weapon
 	self.team = team
+	weapon.connect("weapon_out_of_ammo", self, "handle_reload")
 
 func set_state(new_state: int):
 	if new_state == current_state:
@@ -61,6 +62,9 @@ func set_state(new_state: int):
 	
 	current_state = new_state
 	emit_signal("state_changed", current_state)
+
+func handle_reload():
+	weapon.start_reload()
 	
 
 func _on_PatrolTimer_timeout() -> void:
