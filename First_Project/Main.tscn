@@ -1,18 +1,20 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://actors/Ally.tscn" type="PackedScene" id=1]
-[ext_resource path="res://actors/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://MapAI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BulletManager.gd" type="Script" id=3]
 [ext_resource path="res://Main.gd" type="Script" id=4]
-[ext_resource path="res://actors/Enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://actors/Ally.tscn" type="PackedScene" id=5]
 [ext_resource path="res://CapturableBase.tscn" type="PackedScene" id=6]
-[ext_resource path="res://MapAI.gd" type="Script" id=7]
 [ext_resource path="res://CapturableBaseManager.gd" type="Script" id=8]
-[ext_resource path="res://Team.tscn" type="PackedScene" id=9]
 
 [node name="Main" type="Node2D"]
 position = Vector2( 56, 24 )
 script = ExtResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 412, 220 )
+current = true
+smoothing_enabled = true
 
 [node name="CapturableBaseManager" type="Node2D" parent="."]
 script = ExtResource( 8 )
@@ -20,60 +22,50 @@ script = ExtResource( 8 )
 [node name="CapturableBase" parent="CapturableBaseManager" instance=ExtResource( 6 )]
 
 [node name="CapturableBase2" parent="CapturableBaseManager" instance=ExtResource( 6 )]
-position = Vector2( 1860, -14 )
+position = Vector2( 1668, -24 )
 
 [node name="CapturableBase3" parent="CapturableBaseManager" instance=ExtResource( 6 )]
 position = Vector2( 876, -8 )
 
-[node name="AllyMapAI" type="Node2D" parent="."]
-script = ExtResource( 7 )
-
-[node name="Team" parent="AllyMapAI" instance=ExtResource( 9 )]
-team = 1
-
-[node name="Ally" parent="AllyMapAI" instance=ExtResource( 1 )]
-position = Vector2( 84, 358 )
-
-[node name="Ally2" parent="AllyMapAI" instance=ExtResource( 1 )]
-position = Vector2( 414, 40 )
-
-[node name="EnemyMapAI" type="Node2D" parent="."]
-script = ExtResource( 7 )
-base_capture_start_order = 1
-
-[node name="Team" parent="EnemyMapAI" instance=ExtResource( 9 )]
-team = 2
-
-[node name="Enemy" parent="EnemyMapAI" instance=ExtResource( 5 )]
-position = Vector2( 2684, 378 )
-rotation = -3.13035
-
-[node name="Enemy2" parent="EnemyMapAI" instance=ExtResource( 5 )]
-position = Vector2( 1410, 485 )
-rotation = 3.12941
-
-[node name="Enemy3" parent="EnemyMapAI" instance=ExtResource( 5 )]
-position = Vector2( 2687, 212 )
-rotation = -3.13035
-
-[node name="Enemy4" parent="EnemyMapAI" instance=ExtResource( 5 )]
-position = Vector2( 1650, 206 )
-rotation = 3.13124
-
-[node name="Enemy5" parent="EnemyMapAI" instance=ExtResource( 5 )]
-position = Vector2( 2572, 300 )
-rotation = -3.13035
-
-[node name="Enemy6" parent="EnemyMapAI" instance=ExtResource( 5 )]
-position = Vector2( 1674, 401 )
-rotation = 3.12941
-
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 26, 58 )
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-current = true
-smoothing_enabled = true
-
 [node name="BulletManager" type="Node2D" parent="."]
+position = Vector2( -56, -22 )
 script = ExtResource( 3 )
+
+[node name="AllyMapAI" parent="." instance=ExtResource( 1 )]
+position = Vector2( -56, -22 )
+team_name = 1
+unit = ExtResource( 5 )
+
+[node name="EnemyMapAI" parent="." instance=ExtResource( 1 )]
+position = Vector2( -56, -24 )
+team_name = 2
+
+[node name="AllyRespawnPoints" type="Node2D" parent="."]
+position = Vector2( -138, 196 )
+
+[node name="Position2D" type="Position2D" parent="AllyRespawnPoints"]
+position = Vector2( -78, -66 )
+
+[node name="Position2D2" type="Position2D" parent="AllyRespawnPoints"]
+position = Vector2( 14, 172 )
+
+[node name="Position2D3" type="Position2D" parent="AllyRespawnPoints"]
+position = Vector2( -126, 40 )
+
+[node name="Position2D4" type="Position2D" parent="AllyRespawnPoints"]
+position = Vector2( 40, -122 )
+
+[node name="EnemyRespawnPoints" type="Node2D" parent="."]
+position = Vector2( 2406, 280 )
+
+[node name="Position2D" type="Position2D" parent="EnemyRespawnPoints"]
+position = Vector2( 80, -62 )
+
+[node name="Position2D2" type="Position2D" parent="EnemyRespawnPoints"]
+position = Vector2( -76, 96 )
+
+[node name="Position2D3" type="Position2D" parent="EnemyRespawnPoints"]
+position = Vector2( 92, 42 )
+
+[node name="Position2D4" type="Position2D" parent="EnemyRespawnPoints"]
+position = Vector2( -60, -138 )

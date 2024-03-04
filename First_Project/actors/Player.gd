@@ -1,11 +1,14 @@
 extends KinematicBody2D
 class_name Player
 
+signal died
+
 export (int) var speed = 300
 
 onready var team = $Team
 onready var weapon: Weapon = $Weapon
 onready var health_stat = $Health
+onready var camera_transform = $CameraTransform
 
 func _read() -> void:
 	weapon.initialize(team.team)
@@ -33,6 +36,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_released("reload"):
 		weapon.start_reload()
 
+func set_camera_transform(camera_path: NodePath):
+	camera_transform.remote_path = camera_path
+
 func reload():
 	weapon.start_reload()
 
@@ -41,4 +47,9 @@ func get_team() -> int:
 
 func handle_hit():
 	health_stat.health -= 20
-	print("player hit ", health_stat.health)
+	if health_stat.health <= 0:
+		die()
+
+func die():
+	emit_signal("died")
+	queue_free()
