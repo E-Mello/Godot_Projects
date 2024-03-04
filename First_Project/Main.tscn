@@ -20,10 +20,10 @@ script = ExtResource( 8 )
 [node name="CapturableBase" parent="CapturableBaseManager" instance=ExtResource( 6 )]
 
 [node name="CapturableBase2" parent="CapturableBaseManager" instance=ExtResource( 6 )]
-position = Vector2( 2205, -13 )
+position = Vector2( 1860, -14 )
 
 [node name="CapturableBase3" parent="CapturableBaseManager" instance=ExtResource( 6 )]
-position = Vector2( 1110, -10 )
+position = Vector2( 876, -8 )
 
 [node name="AllyMapAI" type="Node2D" parent="."]
 script = ExtResource( 7 )
@@ -45,32 +45,28 @@ base_capture_start_order = 1
 team = 2
 
 [node name="Enemy" parent="EnemyMapAI" instance=ExtResource( 5 )]
-position = Vector2( 3091, 377 )
+position = Vector2( 2684, 378 )
 rotation = -3.13035
-scale = Vector2( 1, 1 )
 
 [node name="Enemy2" parent="EnemyMapAI" instance=ExtResource( 5 )]
-position = Vector2( 1740, 511 )
+position = Vector2( 1410, 485 )
 rotation = 3.12941
-scale = Vector2( 1, 1 )
 
 [node name="Enemy3" parent="EnemyMapAI" instance=ExtResource( 5 )]
-position = Vector2( 3094, 211 )
+position = Vector2( 2687, 212 )
 rotation = -3.13035
-scale = Vector2( 1, 1 )
 
 [node name="Enemy4" parent="EnemyMapAI" instance=ExtResource( 5 )]
-position = Vector2( 324, 244 )
+position = Vector2( 1650, 206 )
+rotation = 3.13124
 
 [node name="Enemy5" parent="EnemyMapAI" instance=ExtResource( 5 )]
-position = Vector2( 2979, 299 )
+position = Vector2( 2572, 300 )
 rotation = -3.13035
-scale = Vector2( 1, 1 )
 
 [node name="Enemy6" parent="EnemyMapAI" instance=ExtResource( 5 )]
-position = Vector2( 2004, 427 )
+position = Vector2( 1674, 401 )
 rotation = 3.12941
-scale = Vector2( 1, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 26, 58 )
