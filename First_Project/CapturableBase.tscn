@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/topdown-shooter/Tilesheet/tilesheet_complete_2X.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 95.5, 74 )
+extents = Vector2( 279.75, 198.5 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 4 )
@@ -15,7 +15,7 @@ region = Rect2( 2967, 536, 81, 80 )
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 466, 296 )
+position = Vector2( 466, 300 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
