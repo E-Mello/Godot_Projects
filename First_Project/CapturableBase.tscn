@@ -12,18 +12,20 @@ atlas = ExtResource( 4 )
 region = Rect2( 2967, 536, 81, 80 )
 
 [node name="CapturableBase" type="Area2D"]
+position = Vector2( 2, 0 )
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 466, 300 )
+position = Vector2( 2, 2 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 465.375, 297.5 )
+position = Vector2( 1.62503, 2.50003 )
 scale = Vector2( 0.410494, 0.3875 )
 texture = SubResource( 2 )
 
 [node name="Team" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0.25, 2 )
 
 [node name="CaptureTimer" type="Timer" parent="."]
 wait_time = 10.0
