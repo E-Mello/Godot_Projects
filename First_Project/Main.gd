@@ -7,7 +7,7 @@ onready var ally_ai = $AllyMapAI
 onready var enemy_ai = $EnemyMapAI
 onready var bullet_manager = $BulletManager
 onready var camera = $Camera2D
-
+onready var gui = $GUI
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,3 +28,4 @@ func spawn_player():
 	add_child(player)
 	player.set_camera_transform(camera.get_path())
 	player.connect("died", self, "spawn_player")
+	gui.set_player(player)
