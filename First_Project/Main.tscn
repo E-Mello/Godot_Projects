@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://MapAI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/topdown-shooter/Tilesheet/tilesheet_complete.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://actors/Enemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://CapturableBaseManager.gd" type="Script" id=8]
 [ext_resource path="res://UI/GUI.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Pathfinding.gd" type="Script" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -708,6 +709,9 @@ tile_data = PoolIntArray( -1245130, 4, 0, -1245129, 4, 0, -1245128, 4, 0, -12451
 position = Vector2( 412, 193 )
 current = true
 smoothing_enabled = true
+
+[node name="Pathfinding" type="Node2D" parent="."]
+script = ExtResource( 10 )
 
 [node name="CapturableBaseManager" type="Node2D" parent="."]
 script = ExtResource( 8 )
