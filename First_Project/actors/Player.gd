@@ -8,12 +8,12 @@ export (int) var speed = 300
 
 onready var collision_shape = $CollisionShape2D
 onready var team = $Team
-onready var weapon: Weapon = $Weapon
+onready var weapon_manager = $WeaponManager
 onready var health_stat = $Health
 onready var camera_transform = $CameraTransform
 
 func _read() -> void:
-	weapon.initialize(team.team)
+	weapon_manager.initialize(team.team)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -32,17 +32,9 @@ func _physics_process(delta: float) -> void:
 	
 	look_at(get_global_mouse_position())
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_released("shoot"):
-		weapon.shoot()
-	elif event.is_action_released("reload"):
-		weapon.start_reload()
-
 func set_camera_transform(camera_path: NodePath):
 	camera_transform.remote_path = camera_path
 
-func reload():
-	weapon.start_reload()
 
 func get_team() -> int:
 	return team.team

@@ -11,12 +11,16 @@ func set_player(player: Player):
 	self.player = player
 	
 	set_new_health_value(player.health_stat.health)
-	set_current_ammo(player.weapon.current_ammo)
-	set_max_ammo(player.weapon.max_ammo)
-	
 	player.connect("player_health_changed", self, "set_new_health_value")
-	player.weapon.connect("weapon_ammo_changed", self, "set_current_ammo")
-	# Max ammo shouldn't change, so wwe don't need to connect anything yet
+	
+	set_weapon(player.weapon_manager.get_current_weapon())
+	player.weapon_manager.connect("weapon_changed", self, "set_weapon")
+
+func set_weapon(weapon: Weapon):
+	set_current_ammo(weapon.current_ammo)
+	set_max_ammo(weapon.max_ammo)
+	if not weapon.is_connected("weapon_ammo_changed", self, "set_current_ammo"):
+		weapon.connect("weapon_ammo_changed", self, "set_current_ammo")
 	
 func set_new_health_value(new_health: int):
 	var original_color = Color("#5c1c1c")

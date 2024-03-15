@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/topdown-shooter/Spritesheet/spritesheet_characters.png" type="Texture" id=2]
-[ext_resource path="res://weapons/Weapon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://weapons/Pistol.tscn" type="PackedScene" id=3]
 [ext_resource path="res://actors/Health.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Team.tscn" type="PackedScene" id=5]
+[ext_resource path="res://actors/WeaponManager.gd" type="Script" id=6]
+[ext_resource path="res://weapons/SubmachineGun.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 22, 22 )
@@ -24,10 +26,18 @@ shape = SubResource( 1 )
 
 [node name="Health" parent="." instance=ExtResource( 4 )]
 
-[node name="Weapon" parent="." instance=ExtResource( 3 )]
-position = Vector2( 22, 13 )
-
 [node name="Team" parent="." instance=ExtResource( 5 )]
 team = 1
 
 [node name="CameraTransform" type="RemoteTransform2D" parent="."]
+
+[node name="WeaponManager" type="Node2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="Pistol" parent="WeaponManager" instance=ExtResource( 3 )]
+position = Vector2( 25, 13 )
+
+[node name="SubmachineGun" parent="WeaponManager" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( 21, 13 )
+max_ammo = 25
