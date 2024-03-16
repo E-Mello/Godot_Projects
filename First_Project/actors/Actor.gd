@@ -9,7 +9,7 @@ onready var ai = $AI
 onready var weapon: Weapon = $Weapon
 onready var team = $Team
 
-export (int) var speed = 100
+export (int) var speed = 200
 
 func _ready() -> void:
 	ai.initialize(self, weapon, team.team)

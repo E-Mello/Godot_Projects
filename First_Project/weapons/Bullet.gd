@@ -28,6 +28,7 @@ func _on_KillTimer_timeout() -> void:
 
 func _on_Bullet_body_entered(body: Node) -> void:
 	if body.has_method("handle_hit"):
+		GlobalSignals.emit_signal("bullet_impact", body.global_position, direction)
 		if body.has_method("get_team") and body.get_team() != team:
 			body.handle_hit()
 	queue_free()
