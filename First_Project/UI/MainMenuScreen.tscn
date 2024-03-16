@@ -2,25 +2,17 @@
 
 [ext_resource path="res://UI/roboto_mono_36.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/roboto_mono_64.tres" type="DynamicFont" id=2]
-[ext_resource path="res://UI/GameOverScreen.gd" type="Script" id=3]
+[ext_resource path="res://UI/MainMenuScreen.gd" type="Script" id=3]
+[ext_resource path="res://UI/menu_style.tres" type="StyleBox" id=4]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.231373, 0.231373, 0.231373, 1 )
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color( 0, 0, 0, 1 )
-shadow_size = 50
-
-[node name="GameOverScreen" type="CanvasLayer"]
+[node name="MainMenuScreen" type="CanvasLayer"]
 pause_mode = 2
 script = ExtResource( 3 )
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 margin_right = 1024.0
 margin_bottom = 600.0
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = ExtResource( 4 )
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 margin_left = 10.0
@@ -43,43 +35,34 @@ custom_constants/separation = 60
 margin_right = 924.0
 margin_bottom = 86.0
 custom_fonts/font = ExtResource( 2 )
-text = "GAME OVER"
+text = "TOP-DOWN SHOOTER"
 align = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/Rows"]
 margin_top = 146.0
 margin_right = 924.0
-margin_bottom = 393.0
+margin_bottom = 324.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/Rows/CenterContainer"]
-margin_left = 361.0
-margin_right = 563.0
-margin_bottom = 247.0
-custom_constants/separation = 50
+margin_left = 399.0
+margin_right = 525.0
+margin_bottom = 178.0
+custom_constants/separation = 80
 
-[node name="RestartButton" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer"]
-margin_right = 202.0
+[node name="PlayButton" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer"]
+margin_right = 126.0
 margin_bottom = 49.0
 rect_pivot_offset = Vector2( -362, -212 )
 custom_fonts/font = ExtResource( 1 )
-text = " Restart "
-
-[node name="MainMenuButton" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer"]
-margin_top = 99.0
-margin_right = 202.0
-margin_bottom = 148.0
-rect_pivot_offset = Vector2( -362, -212 )
-custom_fonts/font = ExtResource( 1 )
-text = " Main Menu"
+text = " PLAY "
 
 [node name="QuitButton" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer"]
-margin_top = 198.0
-margin_right = 202.0
-margin_bottom = 247.0
+margin_top = 129.0
+margin_right = 126.0
+margin_bottom = 178.0
 rect_pivot_offset = Vector2( -362, -212 )
 custom_fonts/font = ExtResource( 1 )
 text = "Quit"
 
-[connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

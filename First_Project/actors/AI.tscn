@@ -22,6 +22,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="PathLine" type="Line2D" parent="."]
+visible = false
 points = PoolVector2Array( 61, 47 )
 width = 2.0
 default_color = Color( 0.65098, 0.384314, 0.384314, 1 )

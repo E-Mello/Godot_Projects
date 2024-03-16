@@ -2,6 +2,7 @@ extends Node2D
 
 const Player = preload("res://actors/Player.tscn")
 const GameOverScreen = preload("res://UI/GameOverScreen.tscn")
+const PauseScreen = preload("res://UI/PauseScreen.tscn")
 
 onready var capturable_base_manager = $CapturableBaseManager
 onready var ally_ai = $AllyMapAI
@@ -48,3 +49,8 @@ func handle_player_lost():
 	add_child(game_over)
 	game_over.set_title(false)
 	get_tree().paused = true
+
+func _unhandled_key_input(event) -> void:
+	if event.is_action_pressed("pause"):
+		var pause_menu = PauseScreen.instance()
+		add_child(pause_menu)
