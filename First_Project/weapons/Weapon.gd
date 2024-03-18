@@ -13,7 +13,6 @@ var team: int = -1
 var current_ammo: int = max_ammo setget set_current_ammo
 
 onready var end_of_gun = $EndOfGun
-onready var gun_direction = $GunDirection
 onready var attack_cooldown = $AttackCooldown
 onready var animation_player = $AnimationPlayer
 onready var muzzle_flash = $MuzzleFlash
@@ -27,10 +26,10 @@ func initialize(team: int):
 
 func start_reload():
 	animation_player.play("reload")
-	emit_signal("weapon_ammo_changed", current_ammo)
 	
 func _stop_reload():
 	current_ammo = max_ammo
+	emit_signal("weapon_ammo_changed", current_ammo)
 
 func set_current_ammo(new_ammo: int):
 	var actual_ammo = clamp(new_ammo, 0, max_ammo)

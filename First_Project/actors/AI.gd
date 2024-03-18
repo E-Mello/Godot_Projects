@@ -33,6 +33,7 @@ var pathfinding: Pathfinding
 
 func _ready() -> void:
 	set_state(State.PATROL)
+	path_line.visible = should_draw_path_line
 
 func _physics_process(delta: float) -> void:
 	path_line.global_rotation = 0
@@ -50,6 +51,7 @@ func _physics_process(delta: float) -> void:
 					patrol_location_reached = true
 					actor_velocity = Vector2.ZERO
 					patrol_timer.start()
+					path_line.clear_points()
 		State.ENGAGE:
 			if target != null and weapon != null:
 				actor.rotate_toward(target.global_position)
@@ -103,8 +105,6 @@ func set_state(new_state: int):
 		if actor.has_reached_position(next_base):
 			set_state(State.PATROL)
 	
-		else:
-			actor_velocity = actor.velocity_toward(next_base)
 	current_state = new_state
 	emit_signal("state_changed", current_state)
 

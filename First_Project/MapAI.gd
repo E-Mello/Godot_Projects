@@ -21,7 +21,6 @@ onready var unit_container = $UnitContainer
 onready var respawn_timer = $RespawnTimer
 
 func initialize(capturable_bases: Array, respawn_points: Array, pathfinding: Pathfinding):
-	self.pathfinding = pathfinding
 	if capturable_bases.size() == 0 or respawn_points.size() == 0 or unit == null:
 		push_error("Forgot to properly initialize our Map AI")
 		return
@@ -32,12 +31,12 @@ func initialize(capturable_bases: Array, respawn_points: Array, pathfinding: Pat
 	self.respawn_points = respawn_points
 	for respawn in respawn_points:
 		spawn_unit(respawn.global_position)
-	# at the start, spawn the max_units_alive amount of units
-	# add those units to the unit container
 	
 	self.capturable_bases = capturable_bases
+	
 	for base in capturable_bases:
 		base.connect("base_captured", self, "handle_base_captured")
+		
 	check_for_next_capturable_bases()
 
 func handle_base_captured(_new_team: int):

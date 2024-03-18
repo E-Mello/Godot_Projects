@@ -15,9 +15,9 @@ onready var camera_transform = $CameraTransform
 func _read() -> void:
 	weapon_manager.initialize(team.team)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	var movement_direction := Vector2.ZERO
+	
 	if Input.is_action_pressed("up"):
 		movement_direction.y = -1
 	if Input.is_action_pressed("down"):

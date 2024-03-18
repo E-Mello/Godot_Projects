@@ -50,7 +50,7 @@ func handle_player_lost():
 	game_over.set_title(false)
 	get_tree().paused = true
 
-func _unhandled_key_input(event) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		var pause_menu = PauseScreen.instance()
 		add_child(pause_menu)

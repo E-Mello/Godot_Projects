@@ -71,15 +71,15 @@ func check_whether_base_can_be_captured():
 	var majority_team = get_team_with_majority()
 	
 	if majority_team == Team.TeamName.NEUTRAL:
-		return
+		print("No majority in base, stopping capture clock")
+		team_to_capture = Team.TeamName.NEUTRAL
+		capture_timer.stop()
 	elif majority_team == team.team:
 		print("Owning team regained majority, stopping capture clock")
-		# stop the capture countdown, if it is started
 		team_to_capture = Team.TeamName.NEUTRAL
 		capture_timer.stop()
 	else:
 		print("Newe team has majority in base, starting capture clock")
-		# start the capture countdown
 		team_to_capture = majority_team
 		capture_timer.start()
 
