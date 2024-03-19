@@ -10,6 +10,12 @@ config_version=5
 
 [application]
 
-config/name="Tutorial Godot"
+config/name="First Game"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=480
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
