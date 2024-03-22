@@ -1,70 +1,75 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8jdtlyd0ecfo"]
+[gd_scene load_steps=3 format=3 uid="uid://cjpackav8rgk0"]
 
 [ext_resource type="Script" path="res://ui/pause_screen.gd" id="1_asplu"]
 [ext_resource type="FontFile" uid="uid://cr7g35537e0yh" path="res://fonts/Sniglet/Sniglet-Regular.ttf" id="1_gfhf1"]
 
-[node name="PauseScreen" type="CanvasLayer"]
-process_mode = 2
-script = ExtResource("1_asplu")
-
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="PauseScreen" type="Control"]
+process_mode = 3
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.235294, 0.619608, 0.329412, 0.345098)
-metadata/_edit_use_anchors_ = true
+script = ExtResource("1_asplu")
 
-[node name="Message" type="Label" parent="."]
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Message" type="Label" parent="Panel"]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -207.5
-offset_top = 150.0
-offset_right = 207.5
-offset_bottom = 231.0
+offset_left = -136.5
+offset_top = 100.0
+offset_right = 136.5
+offset_bottom = 154.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_gfhf1")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 42
 text = " Game Paused "
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
-[node name="Continue" type="Button" parent="."]
+[node name="Continue" type="Button" parent="Panel"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -74.0
-offset_top = -205.0
-offset_right = 74.0
-offset_bottom = -156.0
+offset_left = -136.5
+offset_top = -255.0
+offset_right = 136.5
+offset_bottom = -211.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_gfhf1")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 28
 text = " Continue "
-metadata/_edit_use_anchors_ = true
 
-[node name="MainMenu" type="Button" parent="."]
+[node name="MainMenu" type="Button" parent="Panel"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -86.0
-offset_top = -120.0
-offset_right = 86.0
-offset_bottom = -71.0
+offset_left = -136.5
+offset_top = -180.0
+offset_right = 136.5
+offset_bottom = -136.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_gfhf1")
-theme_override_font_sizes/font_size = 32
-text = " Main Menu "
-metadata/_edit_use_anchors_ = true
+theme_override_font_sizes/font_size = 28
+text = " Main Menu"
 
-[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Panel/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Panel/MainMenu" to="." method="_on_main_menu_pressed"]

@@ -2,11 +2,10 @@ extends Area2D
 
 @export var speed = 400 # Sped Player
 var screen_size # Size of the game
-var lastAnimation
 # Called when the node enters the scene tree for the first time.
 
 @onready var SpriteNode2D = $AnimatedSprite2D
-@onready var DebugVelocity = $RichTextLabel
+#@onready var DebugVelocity = $DebugVelocity
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -47,4 +46,4 @@ func _process(delta):
 		velocity = velocity.normalized() * speed # make a limit for the velocity / speed
 	
 	global_position += velocity * delta
-	DebugVelocity.text = "Velocity: " + str(velocity)
+	# DebugVelocity.text = "Velocity: " + str(velocity)

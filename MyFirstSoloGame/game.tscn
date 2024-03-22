@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://blebvwilpicaq"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_2fk17"]
+[ext_resource type="PackedScene" uid="uid://c10ige4ucbeuj" path="res://Characters/player.tscn" id="2_kebvi"]
+[ext_resource type="PackedScene" uid="uid://cjpackav8rgk0" path="res://ui/pause_screen.tscn" id="3_id6jr"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_2fk17")
+
+[node name="Player" parent="." instance=ExtResource("2_kebvi")]
+
+[node name="Menus" type="Node" parent="."]
+
+[node name="PauseScreen" parent="Menus" instance=ExtResource("3_id6jr")]
+visible = false
