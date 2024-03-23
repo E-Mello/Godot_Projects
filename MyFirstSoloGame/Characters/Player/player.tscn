@@ -29,7 +29,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"move_down",
-"speed": 10.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -40,7 +40,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"move_left",
-"speed": 10.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -51,7 +51,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"move_right",
-"speed": 10.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -62,7 +62,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"move_up",
-"speed": 10.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -120,10 +120,9 @@ script = ExtResource("1_mljrt")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_kikdt")
-animation = &"stop_up"
+animation = &"move_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CapsuleShape2D_7d6mq")
 
 [node name="DebugVelocity" type="RichTextLabel" parent="."]
