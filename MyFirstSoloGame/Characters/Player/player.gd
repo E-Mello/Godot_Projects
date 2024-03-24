@@ -1,6 +1,6 @@
-extends Area2D
+extends CharacterBody2D
 
-@export var speed = 400 # Sped Player
+@export var speed = 300 # Sped Player
 var screen_size # Size of the game
 # Called when the node enters the scene tree for the first time.
 
@@ -11,16 +11,10 @@ func _ready():
 	screen_size = get_viewport_rect().size
  
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	var velocity = Vector2.ZERO # The player movement vector (0.0)
-	if Input.is_action_pressed("move_right"):
-		velocity.x += 1
-	if  Input.is_action_pressed("move_left"):
-		velocity.x -= 1
-	if Input.is_action_pressed("move_down"):
-		velocity.y += 1
-	if Input.is_action_pressed("move_up"):
-		velocity.y -= 1
+func _process(_delta):
+	# var velocity = Vector2.ZERO # The player movement vector (0.0)
+	velocity.x = Input.get_axis("move_left", "move_right") # (-1 à 1 ) velocity.x recebe os input ("move_left", "move_right")
+	velocity.y = Input.get_axis("move_up", "move_down")
 	
 	if velocity.x > 0:
 		SpriteNode2D.play("move_right") 
@@ -45,5 +39,5 @@ func _process(delta):
 	if velocity.length() > 0: # (300, 50)
 		velocity = velocity.normalized() * speed # make a limit for the velocity / speed
 	
-	global_position += velocity * delta
+	move_and_slide()
 	# DebugVelocity.text = "Velocity: " + str(velocity)
