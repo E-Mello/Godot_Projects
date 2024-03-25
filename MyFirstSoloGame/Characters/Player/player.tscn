@@ -109,9 +109,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7d6mq"]
-radius = 29.0
-height = 70.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oktbs"]
+size = Vector2(34, 15)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(517, 310)
@@ -121,10 +120,12 @@ script = ExtResource("1_mljrt")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_kikdt")
-animation = &"move_up"
+animation = &"move_left"
+frame_progress = 0.726038
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_7d6mq")
+position = Vector2(-1, 23.5)
+shape = SubResource("RectangleShape2D_oktbs")
 
 [node name="DebugVelocity" type="RichTextLabel" parent="."]
 visible = false
